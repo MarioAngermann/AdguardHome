@@ -94,6 +94,10 @@ if [ -z "$(command -v lsb_release)" ]
 then
 apt install -y lsb-release
 fi
+if [ -z "$(command -V sudo)" ]
+then
+apt install -y sudo
+fi
 if [ -z "$(command -v curl)" ]
 then
 apt install -y curl
