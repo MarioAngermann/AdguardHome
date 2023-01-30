@@ -31,7 +31,7 @@ PHPVERSION="8.1"
 #    Wird der Parameter LETSENCRYPT="y" gesetzt
 #    so werden TLS Zertifikate von dieser Domain
 #    von Let's Encrypt automatisch eingebunden
-NEXTCLOUDDNS="fritz.box"
+NEXTCLOUDDNS=""
 # Let'sEncrypt-SSL/TLS: [y|n]
 # D: Sollen Zertifikate von LetsEncrypt eingerichtet werden?
 #    LETSENCRYPT="y" <- inkl. automat. Erneuerungen
@@ -764,7 +764,7 @@ map \$arg_v \$asset_immutable {
 }
   server {
     listen 80 default_server;
-    listen [::]:80 default_server;
+    # listen [::]:80 default_server;
     server_name cloud.server.io;
     root /var/www;
     location ^~ /.well-known/acme-challenge {
@@ -779,7 +779,7 @@ EOF
 ${cat} <<EOF >/etc/nginx/conf.d/nextcloud.conf
 server {
   listen 443 ssl http2 default_server;
-  listen [::]:443 ssl http2 default_server;
+  # listen [::]:443 ssl http2 default_server;
   server_name cloud.server.io;
   ssl_certificate /etc/ssl/certs/ssl-cert-snakeoil.pem;
   ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
@@ -887,8 +887,8 @@ ${clear}
 
 if [ $IPV6 == "n" ]
 then
-sed -i "s/listen [::]/# listen [::]/" /etc/nginx/conf.d/http.conf
-sed -i "s/listen [::]/# listen [::]/" /etc/nginx/conf.d/nextcloud.conf
+# sed -i "s/listen [::]/# listen [::]/" /etc/nginx/conf.d/http.conf
+# sed -i "s/listen [::]/# listen [::]/" /etc/nginx/conf.d/nextcloud.conf
 fi
 
 ${clear}
