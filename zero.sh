@@ -69,7 +69,6 @@ ONLYOFFICE="y"
 UPLOADSIZE='10G'
 UFW="n"
 FAIL2BAN="n"
-IPV6="n"
 
 ###########################
 # Start/Begin            #
@@ -883,14 +882,6 @@ server {
     }
 }
 EOF
-${clear}
-
-if [ $IPV6 == "n" ]
-then
-# sed -i "s/listen [::]/# listen [::]/" /etc/nginx/conf.d/http.conf
-# sed -i "s/listen [::]/# listen [::]/" /etc/nginx/conf.d/nextcloud.conf
-fi
-
 ${clear}
 
 ${echo} "Diffie-Hellman key:"
